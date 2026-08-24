@@ -1,0 +1,39 @@
+name: Refresh fuel prices
+
+# EIA publishes retail prices weekly, on Mondays. This runs after that and
+# commits the result so the apps can read a small static file instead of
+# every install calling EIA with an embedded key.
+on:
+  schedule:
+    - cron: "0 15 * * 2"   # Tuesdays 15:00 UTC, a day after EIA publishes
+  workflow_dispatch:        # so it can be run by hand after setting the key
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch this week's prices
+        env:
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: python3 tools/fetch_fuel_prices.py --out .
+
+      - name: Commit if the price changed
+        run: |
+          if git diff --quiet -- fuel-prices.json; then
+            echo "No change this week."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fuel-prices.json
+          git commit -m "Update fuel prices"
+          git push
