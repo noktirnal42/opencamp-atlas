@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://noktirnal42.github.io/opencamp-atlas/sitemap.xml
