@@ -118,8 +118,23 @@ def main() -> int:
         print("No prices fetched; leaving the existing file untouched.", file=sys.stderr)
         return 1
 
+    # Keep the previous timestamp when the prices themselves have not
+    # moved. updatedAt is wall-clock, so rewriting it every run makes the
+    # file differ every week even when nothing changed, and the workflow's
+    # "commit if the price changed" guard never actually holds.
+    target = args.out / "fuel-prices.json"
+    updated_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if target.exists():
+        try:
+            previous = json.loads(target.read_text(encoding="utf-8"))
+            if previous.get("prices") == prices and previous.get("updatedAt"):
+                updated_at = previous["updatedAt"]
+                print("  prices unchanged; keeping the previous timestamp")
+        except Exception:  # noqa: BLE001 - a damaged file just gets replaced
+            pass
+
     document = {
-        "updatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "updatedAt": updated_at,
         "source": "U.S. Energy Information Administration, weekly retail prices",
         "sourceUrl": "https://www.eia.gov/petroleum/gasdiesel/",
         "coverage": "United States national average",
@@ -127,7 +142,6 @@ def main() -> int:
     }
 
     args.out.mkdir(parents=True, exist_ok=True)
-    target = args.out / "fuel-prices.json"
     target.write_text(json.dumps(document, indent=2) + "\n", encoding="utf-8")
     print(f"wrote {target}")
     return 0
