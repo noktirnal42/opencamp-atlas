@@ -90,9 +90,9 @@
       what you save, plan a route for your vehicle, and show a forecast. There
       is no secondary use, no profiling, and no sharing for advertising.</p>
       <h2>4. Third-party services that receive data</h2>
-      <p>This is the part worth reading. The app has no backend, but it does call
-      these services, and each one necessarily sees the coordinates in the
-      request.</p>
+      <p>This is the part worth reading. The app has no backend of its own, but it
+      does call the services below. Most of them necessarily see coordinates,
+      because that is what the request is for.</p>
       <table>
       <thead>
       <tr>
@@ -123,15 +123,27 @@
       </tr>
       <tr>
       <td><strong>National Weather Service</strong> (api.weather.gov)</td>
-      <td>The coordinates of the site you are viewing, rounded to four decimal places</td>
-      <td>When you open a site's detail screen</td>
+      <td>The coordinates of the site you are viewing, rounded to four decimal places. When you plan a route, also up to five points spaced along that route</td>
+      <td>When you open a site's detail screen, and when you plan a route</td>
       <td>U.S. government service</td>
+      </tr>
+      <tr>
+      <td><strong>Iowa Environmental Mesonet</strong> (mesonet.agron.iastate.edu)</td>
+      <td>The radar tiles being requested, which reveal the area you are looking at</td>
+      <td>Only when you switch on the Weather radar layer</td>
+      <td>Iowa State University, serving NOAA/NWS data</td>
       </tr>
       <tr>
       <td><strong>TomTom</strong></td>
       <td>Start and destination coordinates, and your vehicle's height, weight, and length when you have entered them</td>
       <td>Only when you plan a route</td>
       <td>TomTom Privacy Policy</td>
+      </tr>
+      <tr>
+      <td><strong>GitHub Pages</strong> (noktirnal42.github.io)</td>
+      <td>Your IP address, as with any web request. <strong>No location and nothing about you</strong> — it is one fixed file, identical for every user</td>
+      <td>When you plan a route. Kept for a day while the app is running, so a fresh start may fetch it again</td>
+      <td>GitHub Privacy Statement</td>
       </tr>
       </tbody>
       </table>
@@ -141,12 +153,33 @@
         the only way a route can avoid a bridge your rig will not fit under.
         They are not sent anywhere else, and they are not sent at all if you
         have not entered them.</li>
+      <li><strong>Route weather sends points along your route.</strong> Showing you the weather
+        where you will be in four hours means telling the weather service which
+        places to report on. Samples are capped at five per route.</li>
+      <li><strong>Fuel prices are a fixed file, not a lookup about you.</strong> The app reads
+        one published national-average file. It does not send your route, your
+        vehicle, or your location to get it.</li>
       <li><strong>Camping site and amenity data is bundled in the app</strong>, not fetched.
         Browsing the catalogue sends nothing to anyone.</li>
-      <li>Forecasts are cached for 30 minutes so the same request is not repeated.</li>
+      <li><strong>Weather radar is never stored on your device.</strong> It is also never
+        requested unless you switch the layer on.</li>
+      <li>Forecasts are cached for 30 minutes, and fuel prices for a day, so the
+        same request is not repeated while the app is running.</li>
       <li>We do not send your identity with any of these requests, because the app
         does not have one.</li>
       </ul>
+      <h3>4.1 Links that leave the app</h3>
+      <p>Some controls hand you over to another app or your browser. When that
+      happens, you are on that service's terms and privacy policy, not ours:</p>
+      <ul>
+      <li><strong>"View agency rules"</strong> opens the land manager's own website, such as
+        the Bureau of Land Management, the Forest Service, or the National Park
+        Service.</li>
+      <li><strong>"Open in maps"</strong> hands the destination to Apple Maps, Google Maps, or
+        whichever maps app you have set.</li>
+      </ul>
+      <p>We do not send anything to these services in the background. Nothing is
+      sent unless you tap the control.</p>
       <h2>5. Retention and deletion</h2>
       <p>Your data lives on your device for as long as you keep the app.</p>
       <ul>
