@@ -43,11 +43,16 @@
       </nav>
       <h2>1. What this policy covers</h2>
       <p>OpenCamp Atlas for iPhone, iPad, and Android.</p>
-      <p><strong>The short version.</strong> The app has no accounts and no analytics. Everything
-      you create — saved sites, points, trips, notes, vehicles, photos — stays on
-      your device. The app does send your location to a few map, routing, and
-      weather services so the map, directions, and forecasts can work. Those
-      requests are listed in section 4.</p>
+      <p><strong>The short version.</strong> The app has no sign-up and no analytics. Almost
+      everything you create — saved sites, points, trips, notes, vehicles,
+      photos — stays on your device and is never sent anywhere.</p>
+      <p>There is one exception, and it only happens when you choose it: if you
+      <strong>submit</strong> a review or a condition report, that text is sent to our server
+      so other travelers can eventually see it. Writing one and saving it as a
+      draft sends nothing. Section 2.2 explains exactly where the line is.</p>
+      <p>The app also sends your location to a few map, routing, weather, and fire
+      services so the map, directions, forecasts, and wildfire checks can work.
+      Those requests are listed in section 4.</p>
       <h2>2. What we collect</h2>
       <h3>2.1 Location</h3>
       <ul>
@@ -65,18 +70,42 @@
         third-party services in section 4 only as needed to answer a request.</li>
       </ul>
       <h3>2.2 Things you create</h3>
-      <p>Saved sites, map points, trips, private notes, reviews, moderation
-      reports, vehicle profiles, and vehicle photos.</p>
-      <p><strong>These are stored on your device only.</strong> There is no account and no
-      sync. If you delete the app, this data is gone; there is no copy for us to
-      return or delete on your behalf.</p>
+      <p><strong>Stays on your device, always.</strong> Saved sites, map points, trips, private
+      notes, vehicle profiles, vehicle photos, and any review or report you save
+      as a <strong>draft</strong>. None of this is ever sent to us. If you delete the app it
+      is gone, and there is no copy for us to return or delete on your behalf.</p>
       <p>On Android, the app <strong>excludes its database from Android Auto Backup and
       from device-to-device transfer</strong>, so your points are not copied to Google
       Drive.</p>
+      <p><strong>Sent to us, but only when you press Submit.</strong> A review or condition
+      report you submit is sent to our server so that, after a moderator checks
+      it, other travelers can see it. What is sent is:</p>
+      <ul>
+      <li>the text you wrote, and the star rating if you gave one</li>
+      <li>which campsite it is about</li>
+      <li>the date you say you were there, for a condition report</li>
+      <li>the time you submitted it</li>
+      <li>an anonymous account identifier, described in section 2.3</li>
+      </ul>
+      <p>Nothing else goes with it. Not your location, not your vehicle, not your
+      saved sites, not your notes, not your photos.</p>
+      <p><strong>Submitted content is public once a moderator publishes it.</strong> That is the
+      purpose of submitting. Please do not put anything in a review that you
+      would not want a stranger to read, including where exactly you are right
+      now.</p>
       <h3>2.3 What we do not collect</h3>
       <p>To be explicit, because many apps in this category do collect these:</p>
       <ul>
-      <li><strong>No account.</strong> No email, no name, no password, no sign-in.</li>
+      <li><strong>No sign-up, and no email, name, or password.</strong> You never create an
+        account, and we never ask for or store any way to contact you.</li>
+      <li><strong>An anonymous identifier, only if you submit something.</strong> The first
+        time you press Submit, the app asks our backend for a random anonymous
+        identifier and stores it on your device. It exists so that a moderator
+        can tell one person's submissions apart from another's, so that you can
+        edit or delete what you submitted, and so that someone who repeatedly
+        posts dangerous or abusive content can be stopped. It contains nothing
+        about you, it is not linked to your device or your other data, and it is
+        never created at all if you never submit anything.</li>
       <li><strong>No analytics or usage tracking.</strong> No SDK reports what you tap.</li>
       <li><strong>No crash reporting</strong> at this time.</li>
       <li><strong>No advertising identifiers, no tracking, no data sales.</strong> The app does
@@ -90,9 +119,10 @@
       what you save, plan a route for your vehicle, and show a forecast. There
       is no secondary use, no profiling, and no sharing for advertising.</p>
       <h2>4. Third-party services that receive data</h2>
-      <p>This is the part worth reading. The app has no backend of its own, but it
-      does call the services below. Most of them necessarily see coordinates,
-      because that is what the request is for.</p>
+      <p>This is the part worth reading. The app calls the services below. Most of
+      them necessarily see coordinates, because that is what the request is for.
+      Only one of them — our own backend — ever receives something you wrote,
+      and only when you submit it.</p>
       <table>
       <thead>
       <tr>
@@ -138,6 +168,12 @@
       <td>The coordinates of the site you are viewing, or the map area you are looking at, to find active wildfires there</td>
       <td>When you open a site's detail screen, when the wildfire layer is on, and when you plan a route</td>
       <td>U.S. interagency government service</td>
+      </tr>
+      <tr>
+      <td><strong>Supabase</strong> (our backend, hosted in Oregon, USA)</td>
+      <td>Only what section 2.2 lists: the review or report you submitted and your anonymous identifier. Reading other people's published reviews sends no identifier and nothing about you</td>
+      <td>Only when you submit a review or report, or open a site that has published reviews</td>
+      <td>Supabase Privacy Policy</td>
       </tr>
       <tr>
       <td><strong>TomTom</strong></td>
@@ -195,14 +231,31 @@
       <p>We do not send anything to these services in the background. Nothing is
       sent unless you tap the control.</p>
       <h2>5. Retention and deletion</h2>
-      <p>Your data lives on your device for as long as you keep the app.</p>
+      <p><strong>On your device.</strong> Everything in the first part of section 2.2 lives on
+      your device for as long as you keep the app.</p>
       <ul>
       <li>Delete individual items in the app.</li>
       <li>Clear the downloaded map cache in Settings → Offline data.</li>
-      <li>Uninstalling removes everything.</li>
+      <li>Uninstalling removes all of it.</li>
       </ul>
-      <p>There is no account to delete and no server-side copy, so there is nothing
-      to request from us.</p>
+      <p><strong>On our server.</strong> Only what you submitted, described in the second part
+      of section 2.2.</p>
+      <ul>
+      <li>You can delete your own submission from the app, and it is removed from
+        our database. If it had already been published, it stops being visible
+        to others at the same time.</li>
+      <li>Email us at FreeRangeLabs@drumnbus.com and we will delete everything
+        associated with your anonymous identifier. Tell us the identifier, which
+        you can read in Settings.</li>
+      <li>Submissions we removed for breaking the Community Rules are kept, with
+        the moderation decision, so that an appeal can be reviewed and so the
+        same content is not simply posted again. Everything else is deleted on
+        request.</li>
+      <li><strong>Uninstalling the app does not delete what you already submitted</strong>, and
+        it destroys the anonymous identifier stored on your device, which is the
+        thing that proves the submission was yours. If you want your submissions
+        gone, delete them before you uninstall, or write to us first.</li>
+      </ul>
       <h2>6. Children's privacy</h2>
       <p>Not directed at children under 13. We do not knowingly collect data from
       them. Since the app collects no personal data and has no account, there is
