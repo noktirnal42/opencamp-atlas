@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-09-22T18:36:27Z",
+  "updatedAt": "2026-09-29T19:51:37Z",
   "source": "U.S. Energy Information Administration, weekly retail prices",
   "sourceUrl": "https://www.eia.gov/petroleum/gasdiesel/",
   "coverage": "United States national average",
   "prices": {
     "regular_gasoline": {
-      "pricePerUnit": 4.478,
+      "pricePerUnit": 4.465,
       "unit": "$/GAL",
-      "period": "2026-09-21"
+      "period": "2026-09-28"
     },
     "diesel": {
-      "pricePerUnit": 6.529,
+      "pricePerUnit": 6.382,
       "unit": "$/GAL",
-      "period": "2026-09-21"
+      "period": "2026-09-28"
     }
   }
 }
